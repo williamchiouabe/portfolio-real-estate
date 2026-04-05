@@ -15,7 +15,6 @@ export default function Amenities() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Text slide-in from left
       if (textRef.current) {
         const els = textRef.current.querySelectorAll(".amenity-text");
         gsap.from(els, {
@@ -32,7 +31,6 @@ export default function Amenities() {
         });
       }
 
-      // Right image (back) reveals first
       if (img2Ref.current) {
         gsap.from(img2Ref.current, {
           scale: 0.9,
@@ -47,7 +45,6 @@ export default function Amenities() {
         });
       }
 
-      // Left image (front) slides in with delay
       if (img1Ref.current) {
         gsap.from(img1Ref.current, {
           x: -40,
@@ -63,7 +60,6 @@ export default function Amenities() {
         });
       }
 
-      // Parallax on images
       [img1Ref, img2Ref].forEach((ref, i) => {
         const img = ref.current?.querySelector("img");
         if (img) {
@@ -86,13 +82,20 @@ export default function Amenities() {
 
   return (
     <section ref={sectionRef} className="px-4 md:px-8 py-4">
-      <div className="bg-card rounded-[16px] border border-border overflow-hidden">
+      <div className="bg-card rounded-[16px] border border-border overflow-hidden card-glow">
         <div className="flex flex-col lg:flex-row min-h-[500px] md:min-h-[600px]">
           {/* Left - Text */}
           <div
             ref={textRef}
             className="lg:w-[35%] p-8 md:p-12 lg:p-16 flex flex-col justify-center"
           >
+            <div className="flex items-center gap-4 mb-8">
+              <span className="amenity-text font-sans text-[10px] uppercase tracking-[0.2em] text-muted font-light">
+                (COMODIDADES)
+              </span>
+              <div className="amenity-text accent-line" />
+            </div>
+
             <div className="mb-8">
               <div className="amenity-text font-serif text-[32px] sm:text-[40px] md:text-[48px] text-white leading-[1.1]">
                 COMODIDADES
@@ -105,15 +108,15 @@ export default function Amenities() {
               </div>
             </div>
 
-            <p className="amenity-text font-sans text-sm text-text-secondary leading-relaxed mb-8">
-              De estúdios privativos de fitness a sessões guiadas de meditação,
-              nossas comodidades são projetadas para aprimorar seu bem-estar e
+            <p className="amenity-text font-sans text-sm text-text-secondary leading-[1.8] mb-8 font-light">
+              De estudios privativos de fitness a sessoes guiadas de meditacao,
+              nossas comodidades sao projetadas para aprimorar seu bem-estar e
               promover um senso de harmonia.
             </p>
 
             <a
               href="#contato"
-              className="amenity-text inline-flex items-center self-start px-6 py-2.5 bg-btn-light text-btn-text rounded-full text-xs uppercase tracking-[0.1em] hover:bg-white transition-all duration-300"
+              className="amenity-text inline-flex items-center self-start px-6 py-2.5 bg-accent text-primary rounded-full text-[10px] uppercase tracking-[0.12em] font-medium hover:bg-accent-light transition-all duration-500 btn-shimmer"
             >
               Saiba Mais
             </a>
@@ -124,13 +127,13 @@ export default function Amenities() {
             {/* Back/right image - larger */}
             <div
               ref={img2Ref}
-              className="absolute right-0 top-4 bottom-4 w-[65%] rounded-xl overflow-hidden"
+              className="absolute right-0 top-4 bottom-4 w-[65%] rounded-xl overflow-hidden group"
             >
               <Image
                 src="/images/amenities-corridor.webp"
-                alt="Corredor arquitetônico moderno com teto de vidro geométrico e paredes curvas"
+                alt="Corredor arquitetonico moderno com teto de vidro geometrico e paredes curvas"
                 fill
-                className="object-cover scale-110"
+                className="object-cover scale-110 transition-transform duration-700 group-hover:scale-115"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
             </div>
@@ -138,13 +141,13 @@ export default function Amenities() {
             {/* Front/left image - smaller, overlapping */}
             <div
               ref={img1Ref}
-              className="relative z-10 w-[55%] aspect-[4/3] rounded-xl overflow-hidden shadow-2xl"
+              className="relative z-10 w-[55%] aspect-[4/3] rounded-xl overflow-hidden shadow-2xl group border border-white/5"
             >
               <Image
                 src="/images/amenities-gym.webp"
-                alt="Estúdio de fitness moderno com janelas do chão ao teto e equipamentos de exercício"
+                alt="Estudio de fitness moderno com janelas do chao ao teto e equipamentos de exercicio"
                 fill
-                className="object-cover scale-110"
+                className="object-cover scale-110 transition-transform duration-700 group-hover:scale-115"
                 sizes="(max-width: 1024px) 100vw, 30vw"
               />
             </div>
