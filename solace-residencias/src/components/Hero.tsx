@@ -9,7 +9,6 @@ import Header from "./Header";
 gsap.registerPlugin(ScrollTrigger);
 
 function SolaceTitle() {
-  // Pattern: S=outline, O=solid, L=outline, A=solid, C=outline, E=solid
   const letters = [
     { char: "S", outline: true },
     { char: "O", outline: false },
@@ -24,10 +23,10 @@ function SolaceTitle() {
       {letters.map((l, i) => (
         <span
           key={i}
-          className={l.outline ? "text-transparent" : "text-white"}
+          className={`inline-block transition-transform duration-700 hover:scale-105 ${l.outline ? "text-transparent" : "text-white"}`}
           style={
             l.outline
-              ? { WebkitTextStroke: "2px white" }
+              ? { WebkitTextStroke: "1.5px rgba(255,255,255,0.85)" }
               : undefined
           }
         >
@@ -94,7 +93,7 @@ export default function Hero() {
       ref={sectionRef}
       className="relative h-screen w-full overflow-hidden"
     >
-      {/* Background Image - 100vh */}
+      {/* Background Image */}
       <div ref={imageRef} className="absolute inset-0 scale-110">
         <Image
           src="/images/hero-exterior.webp"
@@ -104,7 +103,9 @@ export default function Hero() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+        {/* Multi-layer gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
       </div>
 
       {/* Header */}
@@ -115,7 +116,7 @@ export default function Hero() {
         ref={contentRef}
         className="relative z-10 h-full px-10 md:px-14 lg:px-16"
       >
-        {/* Bottom composition - no centering container, starts from left padding */}
+        {/* Bottom composition */}
         <div className="absolute bottom-[18%] md:bottom-[20%] left-0 right-0 px-10 md:px-14 lg:px-16">
           <div className="relative">
             {/* Left - SOLACE title */}
@@ -128,26 +129,31 @@ export default function Hero() {
               </h1>
             </div>
 
-            {/* Right - Subtitle & Description, aligned to vertical center of title */}
+            {/* Right - Subtitle & Description */}
             <div className="md:absolute md:right-0 md:top-1/2 md:-translate-y-1/2 max-w-[300px] lg:max-w-[320px] mt-6 md:mt-0">
+              {/* Golden accent line */}
+              <div className="accent-line mb-5" />
               <h2 className="font-serif italic text-[18px] md:text-[20px] lg:text-[22px] text-white tracking-[0.03em] mb-4 uppercase leading-[1.35] text-left">
-                Luxo Holístico em Perfeita Harmonia
+                Luxo Holistico em Perfeita Harmonia
               </h2>
-              <p className="font-sans text-[13px] md:text-[14px] text-white/85 leading-[1.65] text-left">
-                Bem-vindo à Solace Residências, onde design atemporal, vida
+              <p className="font-sans text-[13px] md:text-[14px] text-white/70 leading-[1.75] text-left font-light">
+                Bem-vindo a Solace Residencias, onde design atemporal, vida
                 focada no bem-estar e enriquecimento cultural convergem em
-                unidade para criar um santuário incomparável de elegância e
+                unidade para criar um santuario incomparavel de elegancia e
                 serenidade.
               </p>
             </div>
           </div>
         </div>
 
-        {/* DESLIZE - absolute bottom center of viewport */}
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2">
-          <span className="font-sans text-[11px] uppercase tracking-[5px] text-white">
+        {/* Scroll indicator - animated golden line */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+          <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-white/50 font-light">
             Deslize
           </span>
+          <div className="w-px h-8 bg-white/10 relative overflow-hidden">
+            <div className="w-full h-full bg-accent/60 scroll-indicator-line" />
+          </div>
         </div>
       </div>
     </section>
