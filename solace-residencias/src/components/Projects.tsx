@@ -15,13 +15,13 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "LUMIÈRE DUPLEX RESIDÊNCIAS",
+    name: "LUMIERE DUPLEX RESIDENCIAS",
     description:
-      "Apartamentos duplex de luxo com espaços iluminados, terraços privativos e uma seleção de comodidades exclusivas.",
+      "Apartamentos duplex de luxo com espacos iluminados, terracos privativos e uma selecao de comodidades exclusivas.",
     images: [
       {
         src: "/images/project-1a.webp",
-        alt: "Área de estar com iluminação pendente elegante",
+        alt: "Area de estar com iluminacao pendente elegante",
       },
       {
         src: "/images/project-1b.webp",
@@ -29,33 +29,33 @@ const projects: Project[] = [
       },
       {
         src: "/images/project-1c.webp",
-        alt: "Sala de estar contemporânea com materiais nobres",
+        alt: "Sala de estar contemporanea com materiais nobres",
       },
     ],
   },
   {
     name: "SOLARA PENTHOUSE COLLECTION",
     description:
-      "Coberturas exclusivas com vistas panorâmicas, acabamentos premium e espaços integrados de convivência.",
+      "Coberturas exclusivas com vistas panoramicas, acabamentos premium e espacos integrados de convivencia.",
     images: [
       {
         src: "/images/project-2a.webp",
-        alt: "Cobertura com vista panorâmica da cidade",
+        alt: "Cobertura com vista panoramica da cidade",
       },
       {
         src: "/images/project-2b.webp",
-        alt: "Sala de jantar com design contemporâneo",
+        alt: "Sala de jantar com design contemporaneo",
       },
       {
         src: "/images/project-2c.webp",
-        alt: "Terraço privativo com lounge ao ar livre",
+        alt: "Terraco privativo com lounge ao ar livre",
       },
     ],
   },
   {
     name: "VERDANA GARDEN VILLAS",
     description:
-      "Villas com jardins privativos, integração com a natureza e arquitetura sustentável de alto padrão.",
+      "Villas com jardins privativos, integracao com a natureza e arquitetura sustentavel de alto padrao.",
     images: [
       {
         src: "/images/project-3a.webp",
@@ -67,7 +67,7 @@ const projects: Project[] = [
       },
       {
         src: "/images/project-3c.webp",
-        alt: "Espaço gourmet integrado ao jardim",
+        alt: "Espaco gourmet integrado ao jardim",
       },
     ],
   },
@@ -93,7 +93,6 @@ export default function Projects() {
         },
       });
 
-      // Fade out current content
       tl.to(
         [imagesContainerRef.current, titleRef.current, descRef.current],
         {
@@ -104,10 +103,8 @@ export default function Projects() {
         }
       );
 
-      // Switch index
       tl.call(() => setActiveIndex(index));
 
-      // Fade in new content
       tl.fromTo(
         [imagesContainerRef.current, titleRef.current, descRef.current],
         { opacity: 0, x: 30 },
@@ -188,28 +185,50 @@ export default function Projects() {
 
   return (
     <section ref={sectionRef} id="projetos" className="px-4 md:px-8 py-4">
-      <div className="bg-card rounded-[16px] border border-border py-12 md:py-16 px-8 md:px-12 lg:px-16">
+      <div className="bg-card rounded-[16px] border border-border py-12 md:py-16 px-8 md:px-12 lg:px-16 card-glow">
         <div className="max-w-[1400px] mx-auto project-content">
           {/* Top bar */}
           <div className="flex items-center justify-between mb-10">
-            <span className="font-sans text-xs uppercase tracking-[0.15em] text-muted">
-              (NOSSOS PROJETOS)
-            </span>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
+              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted font-light">
+                (NOSSOS PROJETOS)
+              </span>
+              <div className="accent-line" />
+            </div>
+            <div className="flex items-center gap-2">
+              {/* Prev/Next arrows */}
+              <button
+                onClick={goPrev}
+                className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-accent/50 hover:text-accent transition-all duration-400 cursor-pointer"
+                aria-label="Projeto anterior"
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2">
+                  <path d="M7.5 2.5L4 6l3.5 3.5" />
+                </svg>
+              </button>
               {projects.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => goTo(i)}
-                  className={`w-8 h-8 rounded-full border text-xs font-sans flex items-center justify-center transition-all duration-300 cursor-pointer ${
+                  className={`w-8 h-8 rounded-full border text-[10px] font-sans flex items-center justify-center transition-all duration-500 cursor-pointer ${
                     i === activeIndex
-                      ? "bg-white text-primary border-white"
-                      : "bg-transparent text-white/50 border-white/30 hover:border-white/60"
+                      ? "bg-accent text-primary border-accent"
+                      : "bg-transparent text-white/40 border-white/15 hover:border-accent/40 hover:text-accent"
                   }`}
                   aria-label={`Projeto ${i + 1}`}
                 >
                   {i + 1}
                 </button>
               ))}
+              <button
+                onClick={goNext}
+                className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-white/50 hover:border-accent/50 hover:text-accent transition-all duration-400 cursor-pointer"
+                aria-label="Proximo projeto"
+              >
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.2">
+                  <path d="M4.5 2.5L8 6l-3.5 3.5" />
+                </svg>
+              </button>
             </div>
           </div>
 
@@ -224,12 +243,12 @@ export default function Projects() {
           {/* Images */}
           <div
             ref={imagesContainerRef}
-            className="flex gap-4 mb-8 h-[300px] sm:h-[400px] md:h-[500px]"
+            className="flex gap-3 mb-8 h-[300px] sm:h-[400px] md:h-[500px]"
           >
             {project.images.map((img, i) => (
               <div
                 key={`${activeIndex}-${i}`}
-                className={`relative rounded-lg overflow-hidden transition-transform duration-400 hover:scale-[1.03] ${
+                className={`relative rounded-lg overflow-hidden transition-all duration-500 hover:scale-[1.02] group ${
                   i === 1 ? "flex-[1.2]" : "flex-1"
                 } ${i === 2 ? "hidden sm:block" : ""}`}
               >
@@ -237,9 +256,11 @@ export default function Projects() {
                   src={img.src}
                   alt={img.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 640px) 50vw, 33vw"
                 />
+                {/* Hover overlay with golden accent */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             ))}
           </div>
@@ -248,13 +269,13 @@ export default function Projects() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <p
               ref={descRef}
-              className="font-sans text-sm text-text-secondary max-w-[500px]"
+              className="font-sans text-sm text-text-secondary max-w-[500px] font-light leading-[1.8]"
             >
               {project.description}
             </p>
             <a
               href="#contato"
-              className="inline-flex items-center px-6 py-2.5 bg-btn-light text-btn-text rounded-full text-xs uppercase tracking-[0.1em] hover:bg-white transition-all duration-300 shrink-0"
+              className="inline-flex items-center px-6 py-2.5 bg-accent text-primary rounded-full text-[10px] uppercase tracking-[0.12em] font-medium hover:bg-accent-light transition-all duration-500 shrink-0 btn-shimmer"
             >
               Saiba Mais
             </a>
