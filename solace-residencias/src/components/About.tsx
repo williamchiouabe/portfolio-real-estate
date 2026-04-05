@@ -90,13 +90,16 @@ export default function About() {
       id="sobre"
       className="px-4 md:px-8 py-4"
     >
-      <div className="bg-card rounded-[16px] border border-border overflow-hidden">
+      <div className="bg-card rounded-[16px] border border-border overflow-hidden card-glow">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 p-8 md:p-12 lg:p-16">
           {/* Left Column - Text */}
           <div className="lg:w-[45%] flex flex-col justify-between">
-            <span className="font-sans text-xs uppercase tracking-[0.15em] text-muted mb-12">
-              (SOBRE)
-            </span>
+            <div className="flex items-center gap-4 mb-12">
+              <span className="font-sans text-[10px] uppercase tracking-[0.2em] text-muted font-light">
+                (SOBRE)
+              </span>
+              <div className="accent-line" />
+            </div>
             <div ref={headingRef} className="space-y-0">
               <div className="heading-line font-serif text-[36px] sm:text-[44px] md:text-[52px] lg:text-[56px] text-white leading-[1.1]">
                 DESIGN
@@ -124,28 +127,30 @@ export default function About() {
             >
               <Image
                 src="/images/about-living-room.webp"
-                alt="Sala de estar moderna e luxuosa com sofá bege, mesa de café em madeira escura e janelas do chão ao teto"
+                alt="Sala de estar moderna e luxuosa com sofa bege, mesa de cafe em madeira escura e janelas do chao ao teto"
                 fill
                 className="object-cover scale-110"
                 sizes="(max-width: 1024px) 100vw, 55vw"
               />
+              {/* Subtle gradient overlay at bottom */}
+              <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-card/50 to-transparent" />
             </div>
 
             <div ref={textRef} className="space-y-6">
-              <p className="font-sans text-sm text-text-secondary leading-relaxed">
-                Cada elemento da Solace Residências reflete um compromisso com a
-                excelência. Da elegância atemporal de seus interiores às
+              <p className="font-sans text-sm text-text-secondary leading-[1.8] font-light">
+                Cada elemento da Solace Residencias reflete um compromisso com a
+                excelencia. Da elegancia atemporal de seus interiores as
                 comodidades cuidadosamente selecionadas, o empreendimento
-                incorpora uma abordagem holística ao viver com luxo.
+                incorpora uma abordagem holistica ao viver com luxo.
               </p>
-              <p className="font-sans text-sm text-text-secondary leading-relaxed">
-                Seja buscando um refúgio sereno, um polo cultural ou um espaço
-                que promova o crescimento pessoal, a Solace Residências oferece
+              <p className="font-sans text-sm text-text-secondary leading-[1.8] font-light">
+                Seja buscando um refugio sereno, um polo cultural ou um espaco
+                que promova o crescimento pessoal, a Solace Residencias oferece
                 tudo isso.
               </p>
               <a
                 href="#contato"
-                className="inline-flex items-center px-6 py-2.5 border border-white/80 rounded-full text-white text-xs uppercase tracking-[0.1em] hover:bg-white hover:text-primary transition-all duration-300"
+                className="inline-flex items-center px-6 py-2.5 border border-white/20 rounded-full text-white text-[10px] uppercase tracking-[0.12em] hover:border-accent/50 hover:text-accent transition-all duration-500 btn-shimmer"
               >
                 Saiba Mais
               </a>
