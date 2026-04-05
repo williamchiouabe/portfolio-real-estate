@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #1a1a1a;
+  --color-card: #232323;
+  --color-accent: #c9b99a;
+  --color-muted: #707070;
+  --color-text-secondary: #b0b0b0;
+  --color-btn-light: #f5f5f0;
+  --color-btn-text: #1a1a1a;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+}
+
+:root {
+  --bg-primary: #1a1a1a;
+  --bg-card: #232323;
+  --bg-overlay: rgba(0, 0, 0, 0.5);
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-muted: #707070;
+  --accent: #c9b99a;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
